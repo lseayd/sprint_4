@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>home.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #7a7e85;}
+.s4 { color: #6aab73;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+home.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">pageobject</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">By</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">JavascriptExecutor</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebElement</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">java</span><span class="s2">.</span><span class="s1">util</span><span class="s2">.</span><span class="s1">List</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">MainPage </span><span class="s2">{</span>
+    <span class="s0">private </span><span class="s1">WebDriver driver</span><span class="s2">;</span>
+    <span class="s3">// Maine Page Locators</span>
+    <span class="s0">private final </span><span class="s1">String url </span><span class="s2">= </span><span class="s4">&quot;https://qa-scooter.praktikum-services.ru/&quot;</span><span class="s2">;</span>
+    <span class="s0">public static </span><span class="s1">By topOrderButton </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;.//button[@class='Button_Button__ra12g']&quot;</span><span class="s2">);</span>
+    <span class="s0">public static </span><span class="s1">By lowerOrderButton </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;.//button[contains(@class, 'Button_Middle__1CSJM')]&quot;</span><span class="s2">);</span>
+    <span class="s0">private final </span><span class="s1">By headerOfQuestions </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s4">&quot;.//div[text()='Вопросы о важном']&quot;</span><span class="s2">);</span>
+    <span class="s0">private final </span><span class="s1">By cookieButton </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">id</span><span class="s2">(</span><span class="s4">&quot;rcc-confirm-button&quot;</span><span class="s2">);</span>
+    <span class="s0">public </span><span class="s1">MainPage</span><span class="s2">(</span><span class="s1">WebDriver driver</span><span class="s2">) {</span>
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">driver </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s3">// Добавили методы</span>
+    <span class="s0">public void </span><span class="s1">openWebSite</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">get</span><span class="s2">(</span><span class="s1">url</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">clickTopOrderButton</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">topOrderButton</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">clickLowerOrderButton</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">lowerOrderButton</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">scrollPageDown</span><span class="s2">() {</span>
+        <span class="s1">WebElement element </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">headerOfQuestions</span><span class="s2">);</span>
+        <span class="s2">((</span><span class="s1">JavascriptExecutor</span><span class="s2">) </span><span class="s1">driver</span><span class="s2">).</span><span class="s1">executeScript</span><span class="s2">(</span><span class="s4">&quot;arguments[0].scrollIntoView();&quot;</span><span class="s2">, </span><span class="s1">element</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">clickCookieButton</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">cookieButton</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">clickByQuestion</span><span class="s2">(</span><span class="s1">By question</span><span class="s2">) {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">question</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public </span><span class="s1">String getText</span><span class="s2">(</span><span class="s1">By answer</span><span class="s2">) {</span>
+        <span class="s0">return </span><span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">answer</span><span class="s2">).</span><span class="s1">getText</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+<span class="s2">}</span></pre>
+</body>
+</html>

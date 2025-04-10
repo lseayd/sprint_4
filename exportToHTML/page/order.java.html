@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>order.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cf8e6d;}
+.s1 { color: #bcbec4;}
+.s2 { color: #bcbec4;}
+.s3 { color: #6aab73;}
+.s4 { color: #7a7e85;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+order.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">pageobject</span><span class="s2">;</span>
+
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">By</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">org</span><span class="s2">.</span><span class="s1">openqa</span><span class="s2">.</span><span class="s1">selenium</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+<span class="s0">import </span><span class="s1">page</span><span class="s2">.</span><span class="s1">WebDriver</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">OrderPage </span><span class="s2">{</span>
+    <span class="s0">private </span><span class="s1">page</span><span class="s2">.</span><span class="s1">WebDriver driver</span><span class="s2">;</span>
+    <span class="s0">private final </span><span class="s1">By firstNameField </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;.//input[@placeholder='* Имя']&quot;</span><span class="s2">);</span>
+    <span class="s0">private static final </span><span class="s1">By lastNameField </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;.//input[@placeholder='* Фамилия']&quot;</span><span class="s2">);</span>
+    <span class="s0">private final </span><span class="s1">By addressField </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;.//input[@placeholder='* Адрес: куда привезти заказ']&quot;</span><span class="s2">);</span>
+    <span class="s0">private final </span><span class="s1">By metroStationField </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;.//input[@class='select-search__input']&quot;</span><span class="s2">);</span>
+    <span class="s0">private final </span><span class="s1">By metroStationSearch </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;.//div[@class='select-search__select']/ul/li/button/div[2]&quot;</span><span class="s2">);</span>
+    <span class="s0">private final </span><span class="s1">By phoneField </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;.//input[@placeholder='* Телефон: на него позвонит курьер']&quot;</span><span class="s2">);</span>
+    <span class="s0">private final </span><span class="s1">By nextButton </span><span class="s2">= </span><span class="s1">By</span><span class="s2">.</span><span class="s1">xpath</span><span class="s2">(</span><span class="s3">&quot;.//button[text()='Далее']&quot;</span><span class="s2">);</span>
+
+    <span class="s0">public </span><span class="s1">OrderPage</span><span class="s2">(</span><span class="s1">WebDriver driver</span><span class="s2">) {</span>
+
+        <span class="s0">this</span><span class="s2">.</span><span class="s1">driver </span><span class="s2">= </span><span class="s1">driver</span><span class="s2">;</span>
+    <span class="s2">}</span>
+
+    <span class="s4">//Методы для ввода данных</span>
+    <span class="s0">public void </span><span class="s1">inputFirstName</span><span class="s2">(</span><span class="s1">String firstName</span><span class="s2">) {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">firstNameField</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">firstNameField</span><span class="s2">).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s1">firstName</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">inputLastName</span><span class="s2">(</span><span class="s1">String lastName</span><span class="s2">) {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">lastNameField</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">lastNameField</span><span class="s2">).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s1">lastName</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">inputAddress</span><span class="s2">(</span><span class="s1">String address</span><span class="s2">) {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">addressField</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">addressField</span><span class="s2">).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s1">address</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">choiceMetroStation</span><span class="s2">(</span><span class="s1">String metroStation</span><span class="s2">) {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">metroStationField</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">metroStationField</span><span class="s2">).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s1">metroStation</span><span class="s2">);</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">metroStationSearch</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">inputPhoneNumber</span><span class="s2">(</span><span class="s1">String phoneNumber</span><span class="s2">) {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">phoneField</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">phoneField</span><span class="s2">).</span><span class="s1">sendKeys</span><span class="s2">(</span><span class="s1">phoneNumber</span><span class="s2">);</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">clickNextButton</span><span class="s2">() {</span>
+        <span class="s1">driver</span><span class="s2">.</span><span class="s1">findElement</span><span class="s2">(</span><span class="s1">nextButton</span><span class="s2">).</span><span class="s1">click</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+    <span class="s0">public void </span><span class="s1">setPersonality</span><span class="s2">(</span><span class="s1">String firstName</span><span class="s2">, </span><span class="s1">String lastName</span><span class="s2">, </span><span class="s1">String address</span><span class="s2">, </span><span class="s1">String metroStation</span><span class="s2">, </span><span class="s1">String phoneNumber</span><span class="s2">) {</span>
+        <span class="s1">inputFirstName</span><span class="s2">(</span><span class="s1">firstName</span><span class="s2">);</span>
+        <span class="s1">inputLastName</span><span class="s2">(</span><span class="s1">lastName</span><span class="s2">);</span>
+        <span class="s1">inputAddress</span><span class="s2">(</span><span class="s1">address</span><span class="s2">);</span>
+        <span class="s1">choiceMetroStation</span><span class="s2">(</span><span class="s1">metroStation</span><span class="s2">);</span>
+        <span class="s1">inputPhoneNumber</span><span class="s2">(</span><span class="s1">phoneNumber</span><span class="s2">);</span>
+        <span class="s1">clickNextButton</span><span class="s2">();</span>
+    <span class="s2">}</span>
+
+
+<span class="s2">}</span></pre>
+</body>
+</html>
